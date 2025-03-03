@@ -1,0 +1,191 @@
+# Implementation Plan for Structural/Civil Engineering Consultancy Website
+
+## 3D Visualization Features
+- [ ] Step 1: Install and set up 3D libraries
+  - **Task**: Install Three.js and related libraries for 3D visualization
+  - **Files**:
+    - `package.json`: Add three, @react-three/fiber, @react-three/drei, and @types/three
+  - **User Instructions**: Run `npm install three @react-three/fiber @react-three/drei && npm install --save-dev @types/three`
+
+- [ ] Step 2: Create basic 3D model viewer component
+  - **Task**: Implement a reusable 3D model viewer component with basic controls
+  - **Files**:
+    - `components/3d/model-viewer.tsx`: Core viewer component with canvas setup
+    - `lib/hooks/use-model-controls.ts`: Custom hook for camera and interaction controls
+    - `components/ui/model-viewer-card.tsx`: Shadcn-styled card wrapper for 3D viewer
+
+- [ ] Step 3: Implement model loading and optimization
+  - **Task**: Create utilities for loading and optimizing 3D models
+  - **Files**:
+    - `lib/3d/model-loader.ts`: Model loading utilities
+    - `components/3d/lazy-model-viewer.tsx`: Lazy loading wrapper component
+    - `components/ui/model-skeleton.tsx`: Loading skeleton for 3D models
+
+- [ ] Step 4: Develop Revit model integration
+  - **Task**: Create pipeline for importing and displaying Revit models
+  - **Files**:
+    - `lib/3d/importers/revit.ts`: Revit model loading logic
+    - `components/3d/revit-model-viewer.tsx`: Specialized viewer for Revit models
+    - `public/models/sample-revit.glb`: Sample converted Revit model
+
+- [ ] Step 5: Implement Twinmotion visualization
+  - **Task**: Create components for displaying Twinmotion exports and panoramic renders
+  - **Files**:
+    - `components/3d/panorama-viewer.tsx`: 360° panorama viewer
+    - `lib/3d/importers/twinmotion.ts`: Twinmotion content loading utilities
+    - `public/panoramas/sample-panorama.jpg`: Sample panorama image
+
+## Content Pages
+- [ ] Step 6: Enhance homepage with engineering content
+  - **Task**: Update existing homepage with engineering-specific content and 3D previews
+  - **Files**:
+    - `app/(marketing)/page.tsx`: Update homepage content
+    - `components/landing/hero.tsx`: Engineering-focused hero section
+    - `components/landing/features.tsx`: Engineering services features
+    - `components/landing/projects-preview.tsx`: Featured projects section with 3D previews
+
+- [ ] Step 7: Create services overview page
+  - **Task**: Implement services overview page with cards for each service
+  - **Files**:
+    - `app/(marketing)/services/page.tsx`: Services overview page
+    - `components/services/service-card.tsx`: Card component for individual services
+    - `lib/data/services.ts`: Services data
+
+- [ ] Step 8: Implement individual service detail pages
+  - **Task**: Create dynamic pages for each engineering service with detailed information
+  - **Files**:
+    - `app/(marketing)/services/[slug]/page.tsx`: Dynamic service detail page
+    - `components/services/service-header.tsx`: Service page header
+    - `components/services/service-features.tsx`: Service features component
+    - `components/services/related-projects.tsx`: Related projects component
+
+- [ ] Step 9: Create projects gallery page
+  - **Task**: Implement projects overview page with filtering and sorting
+  - **Files**:
+    - `app/(marketing)/projects/page.tsx`: Projects gallery page
+    - `components/projects/project-gallery.tsx`: Project browsing component
+    - `components/projects/project-filters.tsx`: Filtering component with Shadcn tabs
+    - `lib/data/projects.ts`: Projects data
+
+- [ ] Step 10: Develop project detail pages
+  - **Task**: Create dynamic project detail pages with 3D model integration
+  - **Files**:
+    - `app/(marketing)/projects/[slug]/page.tsx`: Dynamic project detail page
+    - `components/projects/project-header.tsx`: Project header component
+    - `components/projects/project-details.tsx`: Project details component
+    - `components/projects/project-model-viewer.tsx`: Project-specific 3D viewer
+
+- [ ] Step 11: Enhance about page with team section
+  - **Task**: Update about page with company profile and team member information
+  - **Files**:
+    - `app/(marketing)/about/page.tsx`: Enhanced about page
+    - `components/about/company-profile.tsx`: Company profile section
+    - `components/about/team-grid.tsx`: Team member display with Shadcn avatars
+    - `components/about/company-values.tsx`: Company values section
+    - `lib/data/team.ts`: Team member data
+
+- [ ] Step 12: Improve contact page with specialized forms
+  - **Task**: Enhance contact page with engineering-specific inquiry forms
+  - **Files**:
+    - `app/(marketing)/contact/page.tsx`: Updated contact page
+    - `components/forms/contact-form.tsx`: General contact form
+    - `components/forms/project-inquiry-form.tsx`: Project-specific inquiry form
+    - `app/api/contact/route.ts`: Contact form API endpoint
+
+## Database and Backend
+- [ ] Step 13: Set up database schema for projects
+  - **Task**: Create database schema for storing project information
+  - **Files**:
+    - `db/schema/projects-schema.ts`: Project database schema
+    - `db/schema/index.ts`: Update schema index to export project schema
+    - `db/db.ts`: Update schema object to include projects
+
+- [ ] Step 14: Implement project database actions
+  - **Task**: Create server actions for project CRUD operations
+  - **Files**:
+    - `actions/db/projects-actions.ts`: Project database actions
+    - `types/projects-types.ts`: Project type definitions
+    - `types/index.ts`: Update types index to export project types
+
+- [ ] Step 15: Set up services database schema
+  - **Task**: Create database schema for storing service information
+  - **Files**:
+    - `db/schema/services-schema.ts`: Services database schema
+    - `db/schema/index.ts`: Update schema index to export services schema
+    - `db/db.ts`: Update schema object to include services
+
+- [ ] Step 16: Implement services database actions
+  - **Task**: Create server actions for services CRUD operations
+  - **Files**:
+    - `actions/db/services-actions.ts`: Services database actions
+    - `types/services-types.ts`: Service type definitions
+    - `types/index.ts`: Update types index to export service types
+
+## Engineering-Specific Features
+- [ ] Step 17: Create structural calculation demonstrations
+  - **Task**: Implement interactive beam calculator component
+  - **Files**:
+    - `components/engineering/beam-calculator.tsx`: Interactive beam calculator
+    - `lib/engineering/beam-calculations.ts`: Beam calculation utilities
+    - `app/(marketing)/tools/beam-calculator/page.tsx`: Beam calculator page
+
+- [ ] Step 18: Implement structural diagram component
+  - **Task**: Create interactive structural diagram visualization
+  - **Files**:
+    - `components/engineering/structural-diagram.tsx`: Interactive structural diagram
+    - `lib/engineering/diagram-utils.ts`: Diagram utility functions
+    - `app/(marketing)/tools/structural-diagrams/page.tsx`: Structural diagrams page
+
+- [ ] Step 19: Develop project timeline visualization
+  - **Task**: Create interactive timeline for project phases
+  - **Files**:
+    - `components/projects/project-timeline.tsx`: Project timeline component
+    - `lib/projects/timeline-utils.ts`: Timeline utility functions
+    - `components/ui/timeline.tsx`: Reusable timeline UI component
+
+- [ ] Step 20: Implement case studies section
+  - **Task**: Create case study template and listing page
+  - **Files**:
+    - `app/(marketing)/case-studies/page.tsx`: Case studies overview page
+    - `app/(marketing)/case-studies/[slug]/page.tsx`: Case study detail page
+    - `components/case-studies/case-study-header.tsx`: Case study header
+    - `components/case-studies/technical-specs.tsx`: Technical specifications component
+    - `db/schema/case-studies-schema.ts`: Case studies database schema
+    - `actions/db/case-studies-actions.ts`: Case studies database actions
+
+## Animation and UI Enhancements
+- [ ] Step 21: Implement scroll-based animations
+  - **Task**: Add scroll-triggered animations for enhanced UX
+  - **Files**:
+    - `components/animation/scroll-animation.tsx`: Scroll animation wrapper
+    - `lib/hooks/use-scroll-animation.ts`: Scroll animation hook
+    - `lib/animation/animation-variants.ts`: Framer Motion animation variants
+
+- [ ] Step 22: Create page transitions
+  - **Task**: Implement smooth transitions between pages
+  - **Files**:
+    - `components/animation/page-transition.tsx`: Page transition component
+    - `lib/animation/transitions.ts`: Transition utility functions
+    - `app/(marketing)/layout.tsx`: Update layout to include transitions
+
+- [ ] Step 23: Develop animated UI components
+  - **Task**: Create animated versions of common UI components
+  - **Files**:
+    - `components/ui/animated-card.tsx`: Animated Shadcn card component
+    - `components/ui/animated-tabs.tsx`: Animated tabs component
+    - `components/ui/animated-accordion.tsx`: Animated accordion component
+
+## Performance Optimizations
+- [ ] Step 24: Implement 3D content fallbacks
+  - **Task**: Create fallback options for devices that can't handle 3D rendering
+  - **Files**:
+    - `components/3d/model-fallback.tsx`: Fallback component for 3D models
+    - `lib/hooks/use-device-capability.ts`: Hook to detect device capabilities
+    - `lib/3d/generate-thumbnails.ts`: Utility to generate static thumbnails
+
+- [ ] Step 25: Optimize asset loading
+  - **Task**: Implement progressive loading strategies for heavy assets
+  - **Files**:
+    - `lib/3d/progressive-loading.ts`: Progressive loading utilities
+    - `components/ui/progressive-image.tsx`: Progressive image component
+    - `lib/hooks/use-asset-preloading.ts`: Asset preloading hook

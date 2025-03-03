@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacLeod Jordan - Visual Sitemap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e6002d;
+            --secondary-color: #333;
+            --accent-color: #0078d4;
+            --light-bg: #f9f9f9;
+            --border-radius: 8px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .company-info {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 32px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .meta-info {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 15px;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .meta-info p {
+            margin: 5px 0;
+        }
+        
+        .sitemap-container {
+            overflow-x: auto;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        svg {
+            width: 100%;
+            height: auto;
+            min-width: 800px;
+        }
+        
+        .node rect {
+            stroke: #999;
+            fill: #fff;
+            stroke-width: 2px;
+            rx: 6px;
+            ry: 6px;
+            filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.1));
+            transition: var(--transition);
+        }
+        
+        .node:hover rect {
+            stroke: var(--accent-color);
+            stroke-width: 2.5px;
+            filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.15));
+            transform: translateY(-2px);
+        }
+        
+        .node.home rect {
+            fill: #e6f7ff;
+            stroke: #1890ff;
+        }
+        
+        .node.secondary rect {
+            fill: #f6ffed;
+            stroke: #52c41a;
+        }
+        
+        .node.social rect {
+            fill: #fff7e6;
+            stroke: #faad14;
+        }
+        
+        .edgePath {
+            transition: var(--transition);
+        }
+        
+        .edgePath path {
+            stroke: #999;
+            stroke-width: 1.5px;
+            fill: none;
+            transition: var(--transition);
+        }
+        
+        .node text {
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .node:hover text {
+            font-weight: 700;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            padding: 15px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .legend-item:hover .legend-color {
+            transform: scale(1.1);
+        }
+        
+        .legend-color.primary {
+            background-color: #e6f7ff;
+            border-color: #1890ff;
+        }
+        
+        .legend-color.secondary {
+            background-color: #f6ffed;
+            border-color: #52c41a;
+        }
+        
+        .legend-color.social {
+            background-color: #fff7e6;
+            border-color: #faad14;
+        }
+        
+        .legend-color.main {
+            background-color: #fff;
+            border-color: #999;
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions h3 i {
+            font-size: 20px;
+        }
+        
+        .instructions p {
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Animation classes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes drawLine {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .animated-node {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .animated-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 1.5s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+        .delay-6 { animation-delay: 1.2s; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .legend {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">MACLEOD<span>JORDAN</span></div>
+            <div class="company-info">DCF Consultants</div>
+        </header>
+
+        <h1>Visual Sitemap</h1>
+        
+        <div class="meta-info">
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Last Updated:</strong> 29/06/22</p>
+            <p><strong>Prepared by:</strong> Ashley Milne & Steven Brown - Sitecut Ltd.</p>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color primary"></div>
+                <span>Home Page</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color main"></div>
+                <span>Main Navigation</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color secondary"></div>
+                <span>Secondary Pages</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color social"></div>
+                <span>Social Media</span>
+            </div>
+        </div>
+        
+        <div class="sitemap-container">
+            <svg id="sitemap" width="1100" height="800" viewBox="0 0 1100 800">
+                <!-- Home Node -->
+                <g class="node home animated-node">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(550, 50)"></rect>
+                    <text x="610" y="85" text-anchor="middle">Home</text>
+                </g>
+                
+                <!-- Main Navigation Nodes -->
+                <!-- About Us -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(150, 200)"></rect>
+                    <text x="210" y="235" text-anchor="middle">About Us</text>
+                </g>
+                
+                <!-- Services -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(300, 200)"></rect>
+                    <text x="360" y="235" text-anchor="middle">Services</text>
+                </g>
+                
+                <!-- Projects -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(450, 200)"></rect>
+                    <text x="510" y="235" text-anchor="middle">Projects</text>
+                </g>
+                
+                <!-- News -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(600, 200)"></rect>
+                    <text x="660" y="235" text-anchor="middle">News</text>
+                </g>
+                
+                <!-- Careers -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(750, 200)"></rect>
+                    <text x="810" y="235" text-anchor="middle">Careers</text>
+                </g>
+                
+                <!-- Contact Us -->
+                <g class="node animated-node delay-1">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(900, 200)"></rect>
+                    <text x="960" y="235" text-anchor="middle">Contact Us</text>
+                </g>
+                
+                <!-- Secondary Pages -->
+                <g class="node secondary animated-node delay-2">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(450, 350)"></rect>
+                    <text x="510" y="385" text-anchor="middle">Privacy Policy</text>
+                </g>
+                
+                <g class="node secondary animated-node delay-2">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(600, 350)"></rect>
+                    <text x="660" y="385" text-anchor="middle">Terms & Conditions</text>
+                </g>
+                
+                <!-- Social Media -->
+                <g class="node social animated-node delay-2">
+                    <rect width="120" height="60" rx="8" ry="8" transform="translate(50, 350)"></rect>
+                    <text x="110" y="385" text-anchor="middle">Social Media</text>
+                </g>
+                
+                <!-- About Us Subpages -->
+                <g class="node animated-node delay-3">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(100, 350)"></rect>
+                    <text x="150" y="375" text-anchor="middle" font-size="12">History</text>
+                </g>
+                
+                <g class="node animated-node delay-3">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(220, 350)"></rect>
+                    <text x="270" y="375" text-anchor="middle" font-size="12">Mission & Vision</text>
+                </g>
+                
+                <!-- Services Subpages -->
+                <g class="node animated-node delay-4">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(250, 350)"></rect>
+                    <text x="300" y="375" text-anchor="middle" font-size="12">Civil Engineering</text>
+                </g>
+                
+                <g class="node animated-node delay-4">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(250, 410)"></rect>
+                    <text x="300" y="435" text-anchor="middle" font-size="12">Structural Eng.</text>
+                </g>
+                
+                <g class="node animated-node delay-4">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(250, 470)"></rect>
+                    <text x="300" y="495" text-anchor="middle" font-size="12">Principal Designer</text>
+                </g>
+                
+                <g class="node animated-node delay-5">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(370, 350)"></rect>
+                    <text x="420" y="375" text-anchor="middle" font-size="12">Environmental</text>
+                </g>
+                
+                <g class="node animated-node delay-5">
+                    <rect width="100" height="40" rx="8" ry="8" transform="translate(370, 410)"></rect>
+                    <text x="420" y="435" text-anchor="middle" font-size="12">Project Mgmt</text>
+                </g>
+                
+                <!-- Connection Lines -->
+                <!-- Home to Main Navigation -->
+                <path class="animated-path" d="M550,80 L550,140 L150,140 L150,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path" d="M550,80 L550,140 L300,140 L300,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path" d="M550,80 L550,140 L450,140 L450,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path" d="M550,80 L550,140 L600,140 L600,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path" d="M550,80 L550,140 L750,140 L750,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path" d="M550,80 L550,140 L900,140 L900,200" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                
+                <!-- Home to Secondary Pages -->
+                <path class="animated-path delay-1" d="M550,80 L550,140 L450,140 L450,350" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                <path class="animated-path delay-1" d="M550,80 L550,140 L600,140 L600,350" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                
+                <!-- Home to Social Media -->
+                <path class="animated-path delay-1" d="M550,80 L550,140 L50,140 L50,350" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,5"></path>
+                
+                <!-- About Us to Subpages -->
+                <path class="animated-path delay-2" d="M150,260 L150,300 L100,300 L100,350" fill="none" stroke="#999" stroke-width="1.5"></path>
+                <path class="animated-path delay-2" d="M150,260 L150,300 L220,300 L220,350" fill="none" stroke="#999" stroke-width="1.5"></path>
+                
+                <!-- Services to Subpages -->
+                <path class="animated-path delay-3" d="M300,260 L300,300 L250,300 L250,350" fill="none" stroke="#999" stroke-width="1.5"></path>
+                <path class="animated-path delay-3" d="M300,260 L300,300 L250,300 L250,410" fill="none" stroke="#999" stroke-width="1.5"></path>
+                <path class="animated-path delay-3" d="M300,260 L300,300 L250,300 L250,470" fill="none" stroke="#999" stroke-width="1.5"></path>
+                <path class="animated-path delay-4" d="M300,260 L300,300 L370,300 L370,350" fill="none" stroke="#999" stroke-width="1.5"></path>
+                <path class="animated-path delay-4" d="M300,260 L300,300 L370,300 L370,410" fill="none" stroke="#999" stroke-width="1.5"></path>
+            </svg>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Use This Sitemap</h3>
+            <p>This visual sitemap illustrates the structure and hierarchy of the MacLeod Jordan website. It shows the relationships between pages and can be used as a reference during development and content creation.</p>
+            <p>For more detailed information about each page and implementation guidelines, please refer to the accompanying documentation.</p>
+            <p><strong>Tip:</strong> Hover over nodes to highlight them and see their connections more clearly.</p>
+        </div>
+        
+        <footer>
+            <p>© 2022 MacLeod Jordan. This sitemap is for planning purposes only.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add interactive hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const nodes = document.querySelectorAll('.node');
+            
+            nodes.forEach(node => {
+                node.addEventListener('mouseenter', function() {
+                    // Find connected paths
+                    const nodeRect = this.querySelector('rect');
+                    const nodeX = parseFloat(nodeRect.getAttribute('transform').split('translate(')[1]);
+                    const nodeY = parseFloat(nodeRect.getAttribute('transform').split(',')[1]);
+                    
+                    const paths = document.querySelectorAll('path');
+                    paths.forEach(path => {
+                        const d = path.getAttribute('d');
+                        // Check if path contains this node's coordinates
+                        if (d.includes(`${nodeX},${nodeY}`) || 
+                            d.includes(`${nodeX + 60},${nodeY}`) || 
+                            d.includes(`${nodeX},${nodeY + 30}`) || 
+                            d.includes(`${nodeX + 60},${nodeY + 30}`)) {
+                            path.style.stroke = '#1890ff';
+                            path.style.strokeWidth = '2.5px';
+                            path.style.filter = 'drop-shadow(0px 1px 2px rgba(0,0,0,0.3))';
+                        }
+                    });
+                });
+                
+                node.addEventListener('mouseleave', function() {
+                    const paths = document.querySelectorAll('path');
+                    paths.forEach(path => {
+                        path.style.stroke = '#999';
+                        path.style.strokeWidth = '1.5px';
+                        path.style.filter = 'none';
+                    });
+                });
+                
+                // Add pulse animation on click
+                node.addEventListener('click', function() {
+                    this.style.animation = 'pulse 0.5s ease';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+            
+            // Add random subtle animations to nodes periodically
+            setInterval(() => {
+                const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+                randomNode.style.animation = 'pulse 1s ease';
+                setTimeout(() => {
+                    randomNode.style.animation = '';
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacLeod Jordan - Website Sitemap</title>
+    <style>
+        :root {
+            --primary-color: #e6002d;
+            --secondary-color: #8baed8;
+            --text-color: #333;
+            --border-color: #ddd;
+            --hover-color: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #333;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .meta-info {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .sitemap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .main-navigation, .secondary-pages {
+            margin-bottom: 30px;
+        }
+        
+        .sitemap-section {
+            margin-bottom: 40px;
+        }
+        
+        .sitemap-section h2 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .page-card {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            background-color: white;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .page-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+        
+        .page-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .page-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .subpages {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
+        
+        .subpages h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .subpages ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .subpages li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .subpages li:before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .connection-line {
+            border-top: 2px dashed var(--secondary-color);
+            margin: 20px 0;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MACLEOD<span>JORDAN</span></div>
+        <div>DCF Consultants</div>
+    </header>
+
+    <h1>Website Sitemap</h1>
+    
+    <div class="meta-info">
+        <p>Version: 1.0</p>
+        <p>Last Updated: 29/06/22</p>
+        <p>Prepared by: Ashley Milne & Steven Brown - Sitecut Ltd.</p>
+    </div>
+    
+    <div class="sitemap-container">
+        <section class="sitemap-section">
+            <h2>Main Navigation</h2>
+            <div class="sitemap-grid">
+                <div class="page-card">
+                    <h3>Home</h3>
+                    <p>Main landing page with company overview and featured content</p>
+                    <div class="connection-line"></div>
+                    <p>Links to: All main sections, Privacy Policy, Terms & Conditions</p>
+                </div>
+                
+                <div class="page-card">
+                    <h3>About Us</h3>
+                    <p>Company information, history, and mission</p>
+                    <div class="subpages">
+                        <h4>Subpages:</h4>
+                        <ul>
+                            <li>History</li>
+                            <li>Mission & Vision</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Services</h3>
+                    <p>Overview of all engineering and consultancy services</p>
+                    <div class="subpages">
+                        <h4>Subpages:</h4>
+                        <ul>
+                            <li>Civil Engineering</li>
+                            <li>Structural Engineering</li>
+                            <li>Principal Designer</li>
+                            <li>Environmental Engineering</li>
+                            <li>Project Management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Projects</h3>
+                    <p>Portfolio of completed and ongoing projects</p>
+                </div>
+                
+                <div class="page-card">
+                    <h3>News</h3>
+                    <p>Company news, industry updates, and blog posts</p>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Careers</h3>
+                    <p>Job openings and information about working at MacLeod Jordan</p>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Contact Us</h3>
+                    <p>Contact information and inquiry form</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sitemap-section">
+            <h2>Secondary Pages</h2>
+            <div class="sitemap-grid">
+                <div class="page-card">
+                    <h3>Privacy Policy</h3>
+                    <p>Information about data collection and privacy practices</p>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Terms & Conditions</h3>
+                    <p>Legal terms for website usage</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sitemap-section">
+            <h2>Social Media</h2>
+            <div class="sitemap-grid">
+                <div class="page-card">
+                    <h3>Social Media Links</h3>
+                    <p>Links to company social media profiles</p>
+                    <div class="social-links">
+                        <div class="social-icon">FB</div>
+                        <div class="social-icon">TW</div>
+                        <div class="social-icon">LI</div>
+                        <div class="social-icon">IG</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2022 MacLeod Jordan. This sitemap is for planning purposes only.</p>
+    </footer>
+</body>
+</html> 
